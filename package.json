@@ -1,0 +1,19 @@
+{
+  "name": "bikemap-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarahread/bikemap-api.git"
+  },
+  "author": "Sarah Read <sarahmread@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sarahread/bikemap-api/issues"
+  },
+  "homepage": "https://github.com/sarahread/bikemap-api#readme"
+}
