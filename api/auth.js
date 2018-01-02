@@ -62,7 +62,7 @@ router.post('/login', (req, res) => {
       res.status(401).send({success: false, msgu: 'Authentication failed.'});
     } else {
       user.comparePassword(req.body.password, (err, isMatch) => {
-        const u = JSON.parse(JSON.stringify(user); // Massage user into a plain object, required by jwt.sign
+        const u = JSON.parse(JSON.stringify(user)); // Massage user into a plain object, required by jwt.sign
           
         if (isMatch && !err) {
           const token = jwt.sign(), process.env.JWT_SECRET);
