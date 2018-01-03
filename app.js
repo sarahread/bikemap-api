@@ -8,8 +8,8 @@ mongoose.connect(process.env.MONGO_DATABASE || 'mongodb://localhost/bikemap');
 
 const app = express();
 
-app.all((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin); // Allow all origins
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Allow all origins
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE');
