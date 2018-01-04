@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 app.use('/auth', require('./api/auth'));
+app.use('/trips', require('./api/trips'));
 
 const db = mongoose.connection;
 db.once('open', function() {

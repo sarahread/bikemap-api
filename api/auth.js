@@ -23,19 +23,6 @@ passport.use(new JwtStrategy({
   });
 }));
 
-const getToken = headers => {
-  if (headers && headers.authorization) {
-    const parted = headers.authorization.split(' ');
-    if (parted.length === 2) {
-      return parted[1];
-    } else {
-      return null;
-    }
-  } else {
-    return null;
-  }
-};
-
 router.post('/register', (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.json({success: false, msg: 'Please provide username and password.'});
