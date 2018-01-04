@@ -49,27 +49,26 @@ router.post('/register', (req, res) => {
       if (err) {
         return res.json({success: false, msg: 'User already exists.'});
       }
-      res.json({success: true, msg: 'Successful created new user.'});
+      res.json({success: true, msg: 'Successfully created new user.'});
     });
   }
 });
 
 router.post('/login', (req, res) => {
   User.findOne({ username: req.body.username }, (err, user) => {
-    if (err) throw err;
 
     if (!user) {
-      res.status(401).send({success: false, msg: 'Authentication failed.'});
+      res.status(401).json({success: false, msg: 'Authentication failed.'});
     } else {
       user.comparePassword(req.body.password, (err, isMatch) => {
         const u = JSON.parse(JSON.stringify(user)); // Massage user into a plain object, required by jwt.sign
           
         if (isMatch && !err) {
           const token = jwt.sign(u, process.env.JWT_SECRET);
+          res.status(200).json({success: true, token: 'JWT ' + token});
 
-          res.json({success: true, token: 'JWT ' + token});
         } else {
-          res.status(401).send({success: false, msg: 'Authentication failed.'});
+          res.status(401).json({success: false, msg: 'Authentication failed.'});
         }
       });
     }
