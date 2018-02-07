@@ -30,8 +30,8 @@ db.once('open', function() {
   });
 });
 
-app.get('/foo', (req, res) => {
-  res.end('bar');
+app.get('/ping', (req, res) => {
+  res.end('pong');
 });
 
 module.exports = app;
