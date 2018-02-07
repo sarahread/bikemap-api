@@ -30,4 +30,8 @@ db.once('open', function() {
   });
 });
 
+app.get('/foo', (req, res) => {
+  res.end('bar');
+});
+
 module.exports = app;
