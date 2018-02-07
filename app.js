@@ -31,7 +31,7 @@ db.once('open', function() {
 });
 
 app.get('/ping', (req, res) => {
-  res.end('pong!');
+  res.end('pong');
 });
 
 module.exports = app;
