@@ -12,18 +12,19 @@ const TripSchema = new Schema({
   },
   start: {
     lat: Number,
-    long: Number
+    lng: Number
   },
   end: {
     lat: Number,
-    long: Number
+    lng: Number
   },
   distanceTravelled: {
     type: Number
   },
   totalDistance: {
     type: Number
-  }
+  },
+  path: string[]
 });
 
 module.exports = mongoose.model('Trip', TripSchema);
