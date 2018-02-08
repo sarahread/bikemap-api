@@ -19,10 +19,7 @@ router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => 
   });
 });
 
-router.get('/', passport.authenticate('jwt', { session: false}), (req, res) => {
-  Trip.find({
-    user: 
-  })
+router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
 });
 
 module.exports = router;
