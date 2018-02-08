@@ -24,7 +24,7 @@ const TripSchema = new Schema({
   totalDistance: {
     type: Number
   },
-  path: string[]
+  path: [String]
 });
 
 module.exports = mongoose.model('Trip', TripSchema);
