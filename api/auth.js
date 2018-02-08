@@ -52,7 +52,9 @@ router.post('/login', (req, res) => {
           
         if (isMatch && !err) {
           const token = jwt.sign(u, process.env.JWT_SECRET);
-          res.status(200).json({success: true, token: 'JWT ' + token, user: u});
+          res.status(200).json({success: true, token: 'JWT ' + token, user: {
+            username: u.username
+          }});
 
         } else {
           res.status(401).json({success: false, msg: 'Authentication failed.'});
