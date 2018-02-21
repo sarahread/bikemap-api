@@ -5,8 +5,11 @@ const Trip = require('../models/trip');
 
 router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   const newTrip = new Trip({
+    start: req.body.start,
+    end: req.body.end,
+    progress: [],
     totalDistance: req.body.totalDistance,
-    name: req.body.name,
+    path: req.body.path,
     user: req.user
   });
 

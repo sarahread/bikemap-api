@@ -7,20 +7,17 @@ const TripSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  name: {
-    type: String
-  },
   start: {
+    query: String,
     lat: Number,
     lng: Number
   },
   end: {
+    query: String,
     lat: Number,
     lng: Number
   },
-  distanceTravelled: {
-    type: Number
-  },
+  progress: [Number],
   totalDistance: {
     type: Number
   },
