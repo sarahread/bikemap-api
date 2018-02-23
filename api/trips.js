@@ -25,6 +25,7 @@ router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => 
 });
 
 router.get('/', passport.authenticate('jwt'), (req, res) => {
+  console.log('user id', req.user._id);
   Trip.find({'user._id': ObjectId(req.user._id)}, (err, trips) => {
     if (err) {
       return res.status(500).json({ success: false, msg: 'There was a problem retrieving trips: ' + err.message });
