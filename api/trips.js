@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const Trip = require('../models/trip');
-const mongo = require('mongojs');
+const mongoose = require('mongoose');
 const ObjectId = mongo.Types.ObjectId;
 
 router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => {
