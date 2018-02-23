@@ -15,7 +15,7 @@ router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => 
 
   newTrip.save((err, trip) => {
     if (err) {
-      return res.status(500).json({ success: false, msg: 'There was a problem creating a trip: ' + err.message });
+      return res.status(500).json({ success: false, msg: 'There was a problem creating a trip' });
     }
 
     res.json({ success: true, trip });
