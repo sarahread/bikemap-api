@@ -30,7 +30,7 @@ router.get('/', passport.authenticate('jwt'), (req, res) => {
       return res.status(500).json({ success: false, msg: 'There was a problem retrieving trips: ' + err.message });
     }
 
-    trips = trips.map(t => {
+    trips.map(t => {
       t.user = t.user._id;
     });
 
