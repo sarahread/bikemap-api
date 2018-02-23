@@ -18,9 +18,7 @@ const TripSchema = new Schema({
     lng: Number
   },
   progress: [Number],
-  totalDistance: {
-    type: Number
-  },
+  totalDistance: Number,
   path: [String]
 });
 
