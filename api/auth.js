@@ -23,6 +23,14 @@ passport.use(new JwtStrategy({
   });
 }));
 
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
 router.post('/register', (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.json({success: false, msg: 'Please provide username and password.'});
