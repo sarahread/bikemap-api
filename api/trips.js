@@ -27,7 +27,7 @@ router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => 
 });
 
 router.get('/', passport.authenticate('jwt'), (req, res) => {
-  Trip.find({user: ObjectId(req.user._id)}, (err, trips) => {
+  Trip.find({user: ObjectId(req.user)}, (err, trips) => {
     if (err) {
       return res.status(500).json({ success: false, msg: 'There was a problem retrieving trips: ' + err.message });
     }
@@ -41,7 +41,7 @@ router.get('/', passport.authenticate('jwt'), (req, res) => {
 });
 
 router.delete('/:id', passport.authenticate('jwt'), (req, res) => {
-  Trip.remove({user: ObjectId(req.user._id), _id: ObjectId(req.params.id)}, (err, trips) => {
+  Trip.remove({user: ObjectId(req.user), _id: ObjectId(req.params.id)}, (err, trips) => {
     if (err) {
       return res.status(500).json({ success: false, msg: 'There was a problem deleting trip: ' + err.message });
     }
