@@ -19,7 +19,10 @@ const TripSchema = new Schema({
   },
   progress: [Number],
   totalDistance: Number,
-  path: [String]
+  path: [{
+    lat: Number,
+    lng: Number
+  }]
 });
 
 module.exports = mongoose.model('Trip', TripSchema);
