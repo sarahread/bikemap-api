@@ -31,6 +31,16 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+router.get('/user', (req, res) => {
+  User.findById(req.user.id, (err, user) => {
+    if (err) {
+      return res.status(500).json({msg: err.message});
+    }
+
+    res.json({user: { username: user.username}});
+  });
+});
+
 router.post('/register', (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.json({success: false, msg: 'Please provide username and password.'});
