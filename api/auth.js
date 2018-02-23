@@ -10,7 +10,7 @@ passport.use(new JwtStrategy({
   jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
   secretOrKey: process.env.JWT_SECRET
 }, (payload, done) => {
-  console.log('jwt for user', payload.id);
+  console.log('jwt for user', payload);
   User.findOne({id: payload.id}, (err, user) => {
     if (err) {
       return done(err, false);
