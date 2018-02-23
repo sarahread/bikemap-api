@@ -54,7 +54,7 @@ router.post('/:id/log/:distance', passport.authenticate('jwt'), (req, res) => {
     {$push: {
       progress: req.params.distance
     }}
-  ).exec((err, res) => {
+  ).exec((err, result) => {
     if (err) {
       return res.status(400).json({msg: 'There was a problem logging.'});
     }
