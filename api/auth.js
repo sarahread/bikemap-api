@@ -32,7 +32,7 @@ passport.deserializeUser((user, done) => {
 });
 
 router.get('/user', (req, res) => {
-  User.findById(req.user.id, (err, user) => {
+  User.findById(req.user._id, (err, user) => {
     if (err) {
       return res.status(500).json({msg: err.message});
     }
