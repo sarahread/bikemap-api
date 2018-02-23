@@ -48,4 +48,19 @@ router.delete('/:id', passport.authenticate('jwt'), (req, res) => {
   });
 });
 
+router.post('/:id/log/:distance', passport.authenticate('jwt'), (req, res) => {
+  Trip.findOneAndUpdate(
+    {_id: ObjectId(req.params.id), user: ObjectId(req.user._id)},
+    {$push: {
+      progress: req.params.distance
+    }}
+  ).exec((err, res) => {
+    if (err) {
+      return res.status(400).json({msg: 'There was a problem logging.'});
+    }
+
+    res.json();
+  });
+});
+
 module.exports = router;
