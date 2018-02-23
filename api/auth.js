@@ -37,7 +37,7 @@ router.get('/user', passport.authenticate('jwt'), (req, res) => {
       return res.status(500).json({msg: err.message});
     }
 
-    res.json({user: { username: user.username}});
+    res.json({username: user.username});
   });
 });
 
