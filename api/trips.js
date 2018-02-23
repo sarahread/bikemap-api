@@ -5,6 +5,8 @@ const Trip = require('../models/trip');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
+// TODO: Better errors / proper status codes
+
 router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   const newTrip = new Trip({
     start: req.body.start,
@@ -35,6 +37,16 @@ router.get('/', passport.authenticate('jwt'), (req, res) => {
     });
 
     res.json(trips);
+  });
+});
+
+router.delete('/:id', passport.authenticate('jwt'), (req, res) => {
+  Trip.remove({user: ObjectId(req.user._id), _id: ObjectId(req.params.id)}, (err, trips) {
+    if (err) {
+      return res.status(500).json({ success: false, msg: 'There was a problem deleting trip: ' + err.message });
+    }
+
+    res.json();
   });
 });
 
