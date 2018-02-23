@@ -74,7 +74,7 @@ router.post('/login', (req, res) => {
           }});
 
         } else {
-          res.status(401).json({false, msg: 'Authentication failed.'});
+          res.status(401).json({msg: 'Authentication failed.'});
         }
       });
     }
