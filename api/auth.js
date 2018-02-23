@@ -31,7 +31,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-router.get('/user', (req, res) => {
+router.get('/user', passport.authenticate('jwt'), (req, res) => {
   User.findById(req.user._id, (err, user) => {
     if (err) {
       return res.status(500).json({msg: err.message});
